@@ -3,67 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lasic Francesca - Portfolio</title>
+    <title>Francesca Lasic - Design Development</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Lasic Francesca</h1>
+            <h1>Francesca Lasic</h1>
             <nav>
                 <ul>
-                    <li><a href="https://francescalasic.github.io/about/" class="nav-link">About</a></li>
-                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                    <li><a href="https://francescalasic.github.io/skills/" class="nav-link">Skills</a></li>
-                    <li><a href="https://francescalasic.github.io/development/" class="nav-link">Development</a></li>
+                    <li><a href="https://francescalasic.github.io/home/">Home</a></li>
+                    <li><a href="https://francescalasic.github.io/about/">About</a></li>
+                    <li><a href="https://francescalasic.github.io/home/#portfolio">Portfolio</a></li>
+                    <li><a href="https://francescalasic.github.io/skills/">Skills</a></li>
+                    <li><a href="#development" class="active">Development</a></li>
                 </ul>
-</nav>
+            </nav>
         </div>
     </header>
 
-    <section id="hero">
+    <section id="dev-hero">
         <div class="container">
-            <h2>Passionate Italian Designer</h2>
+            <h2>Design Competencies Development</h2>
         </div>
     </section>
 
-    <section id="about" class="section">
+    <section id="development" class="section">
         <div class="container">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I'm Francesca Lasic, a young Italian designer with a deep passion for industrial design. After completing my scientific high school diploma, I pursued my interest in design by enrolling in the Industrial Design program at the Technische Universiteit Eindhoven (TU/e).</p>
-                    <p>This website is a space to share my passion for design, my creative vision, and my journey as a growing designer.</p>
+            <h2>My Growth as a Designer</h2>
+            <p class="section-intro">Here I describe my development journey across five key competency areas</p>
+            <div class="competency-grid">
+                <!-- Business and Entrepreneurship -->
+                <div class="competency-card">
+                    <div class="competency-header">
+                        <div class="competency-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Business & Entrepreneurship</h3>
+                    </div>
+                    <div class="competency-content">
+                        <p>During my journey, I realized that industrial design must respond to market needs...</p>
+                    </div>
+                    <div class="competency-details">
+                        <p>Details about business and entrepreneurship...</p>
+                        <div class="competency-gallery">
+                            <img src="image_business.jpg" alt="Business example">
+                        </div>
+                    </div>
+                    <button class="expand-btn" data-target="#business-details-modal"><i class="fas fa-expand-arrows-alt"></i></button>
                 </div>
-                <div class="about-image">
-                    <img src="https://via.placeholder.com/400x500/ffd6e7/ffffff?text=Francesca" alt="Francesca Lasic">
+
+                <!-- Creativity and Aesthetics -->
+                <div class="competency-card">
+                    <div class="competency-header">
+                        <div class="competency-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Creativity & Aesthetics</h3>
+                    </div>
+                    <div class="competency-content">
+                        <p>My journey helped me understand how to balance creativity and functionality...</p>
+                    </div>
+                    <div class="competency-details">
+                        <p>Details about creativity and aesthetics...</p>
+                        <div class="competency-gallery">
+                            <img src="image_creativity1.jpg" alt="Creativity example 1">
+                            <img src="image_creativity2.jpg" alt="Creativity example 2">
+                        </div>
+                    </div>
+                    <button class="expand-btn" data-target="#creativity-details-modal"><i class="fas fa-expand-arrows-alt"></i></button>
+                </div>
+
+                <!-- Math, Data and Computing -->
+                <div class="competency-card">
+                    <div class="competency-header">
+                        <div class="competency-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3>Math, Data & Computing</h3>
+                    </div>
+                    <div class="competency-content">
+                        <p>I learned that creativity and innovation must be supported by math...</p>
+                    </div>
+                    <div class="competency-details">
+                        <p>Details about math and computing...</p>
+                        <div class="competency-gallery">
+                            <img src="image_math1.jpg" alt="Math example 1">
+                            <img src="image_math2.jpg" alt="Math example 2">
+                        </div>
+                    </div>
+                    <button class="expand-btn" data-target="#math-details-modal"><i class="fas fa-expand-arrows-alt"></i></button>
+                </div>
+
+                <!-- Technology and Realization -->
+                <div class="competency-card">
+                    <div class="competency-header">
+                        <div class="competency-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3>Technology & Realization</h3>
+                    </div>
+                    <div class="competency-content">
+                        <p>Technological skills are essential to turning ideas into real solutions...</p>
+                    </div>
+                    <div class="competency-details">
+                        <p>Details about technology and realization...</p>
+                        <div class="competency-gallery">
+                            <img src="image_tech1.jpg" alt="Technology example 1">
+                            <img src="image_tech2.jpg" alt="Technology example 2">
+                        </div>
+                    </div>
+                    <button class="expand-btn" data-target="#tech-details-modal"><i class="fas fa-expand-arrows-alt"></i></button>
+                </div>
+
+                <!-- User and Society -->
+                <div class="competency-card">
+                    <div class="competency-header">
+                        <div class="competency-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>User & Society</h3>
+                    </div>
+                    <div class="competency-content">
+                        <p>User-centered design has been central to my journey...</p>
+                    </div>
+                    <div class="competency-details">
+                        <p>Details about user and society...</p>
+                        <div class="competency-gallery">
+                            <img src="image_user.jpg" alt="User example">
+                        </div>
+                    </div>
+                    <button class="expand-btn" data-target="#user-details-modal"><i class="fas fa-expand-arrows-alt"></i></button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="portfolio" class="section">
-        <div class="container">
-            <h2>My Portfolio</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/600x400/ffd6e7/ffffff?text=Project+1" alt="Project 1">
-                    <h3>Project 1</h3>
-                    <p>Description of the first project</p>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/600x400/ffd6e7/ffffff?text=Project+2" alt="Project 2">
-                    <h3>Project 2</h3>
-                    <p>Description of the second project</p>
-                </div>
+    <!-- Modals -->
+    <div id="business-details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Business & Entrepreneurship</h3>
+            <p>Details about business and entrepreneurship...</p>
+            <div class="competency-gallery">
+                <img src="image_business.jpg" alt="Business example">
             </div>
         </div>
-    </section>
+    </div>
+
+    <div id="creativity-details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Creativity & Aesthetics</h3>
+            <p>Details about creativity and aesthetics...</p>
+            <div class="competency-gallery">
+                <img src="image_creativity1.jpg" alt="Creativity example 1">
+                <img src="image_creativity2.jpg" alt="Creativity example 2">
+            </div>
+        </div>
+    </div>
+
+    <div id="math-details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Math, Data & Computing</h3>
+            <p>Details about math and computing...</p>
+            <div class="competency-gallery">
+                <img src="image_math1.jpg" alt="Math example 1">
+                <img src="image_math2.jpg" alt="Math example 2">
+            </div>
+        </div>
+    </div>
+
+    <div id="tech-details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Technology & Realization</h3>
+            <p>Details about technology and realization...</p>
+            <div class="competency-gallery">
+                <img src="image_tech1.jpg" alt="Technology example 1">
+                <img src="image_tech2.jpg" alt="Technology example 2">
+            </div>
+        </div>
+    </div>
+
+    <div id="user-details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>User & Society</h3>
+            <p>Details about user and society...</p>
+            <div class="competency-gallery">
+                <img src="image_user.jpg" alt="User example">
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Lasic Francesca. All rights reserved.</p>
+            <p>&copy; 2025 Francesca Lasic. All rights reserved.</p>
         </div>
     </footer>
 
