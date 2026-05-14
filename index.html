@@ -8,733 +8,479 @@
   <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=zodiak@400,500,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* ====== TOKENS ====== */
     :root {
-      --pink:        #ffc0cb;
-      --pink-text:   #b5607a;
-      --pink-hover:  #e8a0b4;
-      --pink-light:  #f8c8dc;
-      --bg:          #faf8f6;
-      --surface:     #f5f1ee;
-      --surface2:    #ede8e4;
-      --border:      #ddd6cf;
-      --text:        #2a2420;
-      --muted:       #7a706a;
-      --faint:       #b0a9a3;
-      --white:       #ffffff;
-      --font-d:      'Zodiak', Georgia, serif;
-      --font-b:      'Cabinet Grotesk', 'Helvetica Neue', sans-serif;
-      --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-xl: 22px; --r-full: 9999px;
+      --pink: #ffc0cb;
+      --pink-text: #b5607a;
+      --pink-hover: #e8a0b4;
+      --pink-light: #f8c8dc;
+      --bg: #faf8f6;
+      --surface: #f5f1ee;
+      --surface2: #ede8e4;
+      --border: #ddd6cf;
+      --text: #2a2420;
+      --muted: #7a706a;
+      --faint: #b0a9a3;
+      --white: #ffffff;
+      --font-d: 'Zodiak', Georgia, serif;
+      --font-b: 'Cabinet Grotesk', 'Helvetica Neue', sans-serif;
+      --r-sm: 6px;
+      --r-md: 10px;
+      --r-lg: 16px;
+      --r-xl: 22px;
+      --r-full: 9999px;
       --shadow-sm: 0 1px 4px rgba(42,36,32,0.07);
       --shadow-md: 0 4px 18px rgba(42,36,32,0.10);
     }
+
     [data-theme="dark"] {
-      --pink:        #ffc0cb;
-      --pink-text:   #b5607a;
-      --pink-hover:  #e8a0b4;
-      --pink-light:  #4a2a38;
-      --bg:          #181412;
-      --surface:     #201c1a;
-      --surface2:    #2a2422;
-      --border:      #3a3330;
-      --text:        #d4cdc8;
-      --muted:       #8a807a;
-      --faint:       #524c48;
-      --white:       #201c1a;
+      --pink: #ffc0cb;
+      --pink-text: #b5607a;
+      --pink-hover: #e8a0b4;
+      --pink-light: #4a2a38;
+      --bg: #181412;
+      --surface: #201c1a;
+      --surface2: #2a2422;
+      --border: #3a3330;
+      --text: #d4cdc8;
+      --muted: #8a807a;
+      --faint: #524c48;
+      --white: #201c1a;
       --shadow-sm: 0 1px 4px rgba(0,0,0,0.3);
       --shadow-md: 0 4px 18px rgba(0,0,0,0.4);
     }
 
-    /* ====== RESET ====== */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 72px; -webkit-font-smoothing: antialiased; }
-    body { font-family: var(--font-b); font-size: 17px; line-height: 1.7; color: var(--text); background: var(--bg); }
-    img { display: block; max-width: 100%; }
-    a { color: var(--pink); text-decoration: none; }
-    a:hover { color: var(--pink-hover); }
-    h1,h2,h3,h4,h5 { text-wrap: balance; line-height: 1.2; }
-    ul { list-style: none; }
-    :focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; border-radius: 4px; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    /* ====== HEADER ====== */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 72px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: var(--font-b);
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    a {
+      color: var(--pink);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--pink-hover);
+    }
+
+    h1,h2,h3,h4,h5 {
+      text-wrap: balance;
+      line-height: 1.2;
+    }
+
+    ul {
+      list-style: none;
+    }
+
     header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
       background: var(--bg);
       border-bottom: 1px solid var(--border);
       box-shadow: var(--shadow-sm);
-      transition: background .2s, box-shadow .2s;
     }
+
     .header-inner {
-      max-width: 1100px; margin: 0 auto;
+      max-width: 1100px;
+      margin: 0 auto;
       padding: 0 28px;
       height: 64px;
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
+
     .logo {
-      font-family: var(--font-d); font-size: 18px; font-weight: 700;
-      color: var(--text); text-decoration: none; letter-spacing: -0.02em;
+      font-family: var(--font-d);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
     }
-    .logo span { color: var(--pink-text); }
-    nav ul { display: flex; gap: 28px; }
-    nav a {
-      font-size: 14px; font-weight: 500; color: var(--muted);
-      text-decoration: none; transition: color .15s;
+
+    .logo span {
+      color: var(--pink-text);
     }
-    nav a:hover, nav a.active { color: var(--pink-text); }
-    .header-right { display: flex; align-items: center; gap: 8px; }
+
     .theme-btn {
-      width: 36px; height: 36px; border-radius: var(--r-full);
-      display: flex; align-items: center; justify-content: center;
-      background: none; border: none; cursor: pointer;
-      color: var(--muted); transition: color .15s, background .15s;
+      width: 36px;
+      height: 36px;
+      border-radius: 9999px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: var(--muted);
       font-size: 15px;
     }
-    .theme-btn:hover { color: var(--text); background: var(--surface2); }
 
-    /* ====== HERO ====== */
     .hero {
       min-height: 68vh;
       padding: 120px 28px 80px;
       background: var(--surface);
       border-bottom: 1px solid var(--border);
-      display: flex; align-items: flex-end;
+      display: flex;
+      align-items: flex-end;
     }
-    .hero-inner { max-width: 860px; margin: 0 auto; width: 100%; }
+
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
     .hero-tag {
-      display: inline-block; font-size: 11px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: .12em;
-      color: var(--pink-text); margin-bottom: 20px;
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--pink-text);
+      margin-bottom: 20px;
     }
+
     .hero h1 {
       font-family: var(--font-d);
       font-size: clamp(2.6rem, 6vw, 5.2rem);
-      font-weight: 700; letter-spacing: -.03em;
-      color: var(--text); margin-bottom: 24px;
-    }
-    .hero h1 em { font-style: italic; color: var(--pink); }
-    .hero-sub {
-      font-size: clamp(1rem, 1.8vw, 1.2rem);
-      color: var(--muted); max-width: 60ch; line-height: 1.6;
+      font-weight: 700;
+      letter-spacing: -.03em;
+      margin-bottom: 24px;
     }
 
-    /* ====== STICKY NAV (SECTIONS) ====== */
+    .hero h1 em {
+      font-style: italic;
+      color: var(--pink);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      color: var(--muted);
+      max-width: 60ch;
+    }
+
     .section-nav {
-      position: sticky; top: 64px; z-index: 90;
+      position: sticky;
+      top: 64px;
+      z-index: 90;
       background: var(--bg);
       border-bottom: 1px solid var(--border);
       overflow-x: auto;
     }
+
     .section-nav ul {
-      max-width: 1100px; margin: 0 auto; padding: 0 28px;
-      display: flex; gap: 0; white-space: nowrap;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: flex;
+      white-space: nowrap;
     }
+
     .section-nav a {
-      display: inline-block; padding: 14px 18px;
-      font-size: 13px; font-weight: 600; color: var(--muted);
-      text-decoration: none; border-bottom: 2px solid transparent;
-      transition: color .15s, border-color .15s;
-    }
-    .section-nav a:hover, .section-nav a.active {
-      color: var(--pink-text); border-bottom-color: var(--pink);
+      display: inline-block;
+      padding: 14px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      border-bottom: 2px solid transparent;
     }
 
-    /* ====== PAGE ====== */
-    .page { max-width: 1100px; margin: 0 auto; padding: 72px 28px 100px; }
+    .section-nav a.active,
+    .section-nav a:hover {
+      color: var(--pink-text);
+      border-bottom-color: var(--pink);
+    }
 
-    /* ====== SECTION HEADER ====== */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 72px 28px 100px;
+    }
+
+    .content-section {
+      margin-bottom: 90px;
+    }
+
     .sec-label {
-      font-size: 11px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: .12em; color: var(--pink-text); margin-bottom: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--pink-text);
+      margin-bottom: 8px;
     }
+
     .sec-title {
       font-family: var(--font-d);
       font-size: clamp(1.7rem, 3.5vw, 2.6rem);
-      font-weight: 700; letter-spacing: -.025em; color: var(--text);
       margin-bottom: 20px;
     }
+
     .sec-bar {
-      width: 36px; height: 3px; background: var(--pink);
-      border-radius: var(--r-full); margin-bottom: 44px;
+      width: 36px;
+      height: 3px;
+      background: var(--pink);
+      border-radius: 9999px;
+      margin-bottom: 44px;
     }
 
-    /* ====== CONTENT SECTION WRAPPER ====== */
-    .content-section { margin-bottom: 90px; scroll-margin-top: 130px; }
-
-    /* ====== PROSE ====== */
-    .prose p { margin-bottom: 18px; color: var(--muted); max-width: 74ch; }
-    .prose p:last-child { margin-bottom: 0; }
-    .prose h3 {
-      font-family: var(--font-d); font-size: 1.2rem; font-weight: 700;
-      color: var(--text); margin: 32px 0 12px; letter-spacing: -.015em;
+    .project-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: 1fr;
     }
-    .prose ul {
-      margin: 0 0 18px 0; list-style: disc; padding-left: 20px;
+
+    @media (min-width: 600px) {
+      .project-grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
-    .prose ul li { color: var(--muted); margin-bottom: 8px; max-width: 70ch; }
-
-    /* ====== TWO COL LAYOUT ====== */
-    .two-col { display: grid; grid-template-columns: 1fr; gap: 48px; }
-    @media (min-width: 760px) { .two-col { grid-template-columns: 1fr 1fr; } }
-    .two-col-wide { display: grid; grid-template-columns: 1fr; gap: 48px; }
-    @media (min-width: 760px) { .two-col-wide { grid-template-columns: 1.4fr 1fr; } }
-
-    /* ====== PROJECT CARDS ====== */
-    .project-grid { display: grid; gap: 24px; grid-template-columns: 1fr; }
-    @media (min-width: 600px) { .project-grid { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 900px) { .project-grid { grid-template-columns: 1fr 1fr; } }
 
     .project-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r-xl); overflow: hidden;
-      display: flex; flex-direction: column;
-      transition: box-shadow .2s, border-color .2s;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: .2s;
     }
+
     .project-card:hover {
       box-shadow: var(--shadow-md);
-      border-color: color-mix(in srgb, var(--pink) 35%, var(--border));
     }
+
     .project-img {
-      width: 100%; aspect-ratio: 16/9; object-fit: cover;
+      width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
       background: var(--surface2);
-      display: flex; align-items: center; justify-content: center;
-      position: relative; overflow: hidden;
     }
-    .project-img-placeholder {
-      width: 100%; aspect-ratio: 16/9;
-      background: linear-gradient(135deg, var(--surface2) 0%, color-mix(in srgb, var(--pink) 10%, var(--surface2)) 100%);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 10px; color: var(--faint);
+
+    .project-body {
+      padding: 24px 26px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
-    .project-img-placeholder i { font-size: 28px; opacity: .5; }
-    .project-img-placeholder span { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; opacity: .6; }
-    .project-body { padding: 24px 26px 28px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
-    .project-name {
-      font-family: var(--font-d); font-size: 1.15rem; font-weight: 700;
-      color: var(--text); letter-spacing: -.015em;
-    }
+
     .project-tag {
-      display: inline-block; font-size: 11px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: .1em;
-      color: #b5607a; background: var(--pink-light);
-      padding: 3px 10px; border-radius: var(--r-full);
-    }
-    .project-body p { font-size: 15px; color: var(--muted); line-height: 1.65; margin: 0; }
-
-    /* ====== TAGS ====== */
-    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .tag {
-      display: inline-block; font-size: 12px; font-weight: 600;
-      padding: 4px 12px; border-radius: var(--r-full);
-    }
-    .tag-s { background: var(--pink-light); color: #b5607a; border: 1px solid #e8a0b8; }
-    .tag-w { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
-
-    /* ====== QUOTE BLOCK ====== */
-    .quote-block {
-      margin: 40px 0;
-      padding: 28px 32px;
-      background: color-mix(in srgb, var(--pink) 7%, var(--surface));
-      border-left: 3px solid var(--pink);
-      border-radius: 0 var(--r-lg) var(--r-lg) 0;
-    }
-    .quote-block blockquote {
-      font-family: var(--font-d); font-style: italic;
-      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-      color: var(--text); line-height: 1.6; max-width: 68ch;
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: #b5607a;
+      background: var(--pink-light);
+      padding: 3px 10px;
+      border-radius: 9999px;
+      width: fit-content;
     }
 
-    /* ====== PILLAR GRID ====== */
-    .pillar-grid { display: grid; gap: 18px; grid-template-columns: 1fr; margin-bottom: 40px; }
-    @media (min-width: 600px) { .pillar-grid { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 900px) { .pillar-grid { grid-template-columns: 1fr 1fr 1fr; } }
-    .pillar {
-      padding: 24px; background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r-xl); display: flex; flex-direction: column; gap: 10px;
-      transition: box-shadow .2s;
+    .project-name {
+      font-family: var(--font-d);
+      font-size: 1.15rem;
+      font-weight: 700;
     }
-    .pillar:hover { box-shadow: var(--shadow-md); }
-    .pillar i { font-size: 20px; color: var(--pink); }
-    .pillar h4 { font-family: var(--font-d); font-size: 1rem; font-weight: 700; color: var(--text); letter-spacing: -.01em; }
-    .pillar p { font-size: 14px; color: var(--muted); line-height: 1.65; margin: 0; }
 
-    /* ====== TIMELINE ====== */
-    .timeline { display: grid; gap: 20px; grid-template-columns: 1fr; }
-    @media (min-width: 700px) { .timeline { grid-template-columns: 1fr 1fr 1fr; } }
-    .t-card {
-      padding: 28px; background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r-xl); position: relative; overflow: hidden;
+    .project-body p {
+      color: var(--muted);
     }
-    .t-card::before {
-      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: var(--pink); opacity: .25;
-    }
-    .t-card.now::before { opacity: 1; }
-    .t-period { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--pink-text); margin-bottom: 8px; }
-    .t-card h3 { font-family: var(--font-d); font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 12px; }
-    .t-card p { font-size: 14.5px; color: var(--muted); line-height: 1.7; }
 
-    /* ====== EXPERTISE GRID ====== */
-    .expertise-grid { display: grid; gap: 18px; grid-template-columns: 1fr; }
-    @media (min-width: 700px) { .expertise-grid { grid-template-columns: 1fr 1fr; } }
-    .exp-card {
-      padding: 24px; background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r-xl); display: flex; flex-direction: column; gap: 8px;
+    .section-sep {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 80px 0;
     }
-    .exp-card h4 { font-family: var(--font-d); font-size: 1rem; font-weight: 700; color: var(--pink); }
-    .exp-card p { font-size: 14.5px; color: var(--muted); line-height: 1.65; margin: 0; }
 
-    /* ====== PDP LIST ====== */
-    .pdp-list { display: flex; flex-direction: column; gap: 18px; }
-    .pdp-item {
-      display: flex; gap: 20px; align-items: flex-start;
-      padding: 22px 24px; background: var(--surface);
-      border: 1px solid var(--border); border-radius: var(--r-xl);
-    }
-    .pdp-num {
-      flex-shrink: 0; width: 36px; height: 36px; border-radius: var(--r-full);
-      background: #f8c8dc; color: #b5607a; border: 1.5px solid #e8a0b8;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px; font-weight: 800; font-family: var(--font-d);
-    }
-    .pdp-item p { font-size: 15px; color: var(--muted); line-height: 1.65; margin: 0; }
-
-    /* ====== DIVIDER ====== */
-    .section-sep { border: none; border-top: 1px solid var(--border); margin: 80px 0; }
-
-    /* ====== FOOTER ====== */
     footer {
-      background: var(--surface); border-top: 1px solid var(--border);
-      text-align: center; padding: 32px 28px;
-      font-size: 13px; color: var(--faint);
-    }
-
-    /* ====== REVEAL ====== */
-    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .55s cubic-bezier(.16,1,.3,1), transform .55s cubic-bezier(.16,1,.3,1); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ====== RESPONSIVE ====== */
-    @media (max-width: 640px) {
-      nav { display: none; }
-      .hero { padding: 110px 20px 60px; }
-      .page { padding: 60px 20px 80px; }
-      .header-inner { padding: 0 20px; }
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 32px 28px;
+      font-size: 13px;
+      color: var(--faint);
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-inner">
-      <a href="https://francescalasic.github.io/home/" class="logo">Lasic <span>Francesca</span></a>
-      <div class="header-right">
-        <button class="theme-btn" data-theme-toggle aria-label="Toggle theme">
-          <i class="fas fa-moon"></i>
-        </button>
-      </div>
-    </div>
-  </header>
+<header>
+  <div class="header-inner">
+    <a href="https://francescalasic.github.io/home/" class="logo">Lasic <span>Francesca</span></a>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-      <p class="hero-tag">Industrial Design, TU/e &nbsp;·&nbsp; Year Two Portfolio</p>
-      <h1>Professional Identity<br><em>&amp; Design Vision</em></h1>
-      <p class="hero-sub">From visual thinking to reflective, experimental and systems-aware design. A record of growth, curiosity and intentional making.</p>
+    <button class="theme-btn" data-theme-toggle aria-label="Toggle theme">
+      <i class="fas fa-moon"></i>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-tag">Industrial Design, TU/e · Year Two Portfolio</p>
+
+    <h1>
+      Professional Identity<br>
+      <em>&amp; Design Vision</em>
+    </h1>
+
+    <p class="hero-sub">
+      From visual thinking to reflective, experimental and systems-aware design.
+      A record of growth, curiosity and intentional making.
+    </p>
+  </div>
+</section>
+
+<nav class="section-nav">
+  <ul>
+    <li><a href="#projects">Projects</a></li>
+  </ul>
+</nav>
+
+<main class="page">
+
+  <section id="projects" class="content-section">
+    <p class="sec-label">Project Overview</p>
+
+    <h2 class="sec-title">Year Two Projects</h2>
+
+    <div class="sec-bar"></div>
+
+    <div class="project-grid">
+
+      <!-- Terravy -->
+      <div class="project-card">
+        <div class="project-img">
+          <img src="terravy.jpeg" alt="Terravy and Reivy project">
+        </div>
+
+        <div class="project-body">
+          <span class="project-tag">Biomaterials &amp; Sustainability</span>
+
+          <p class="project-name">Terravy &amp; Reivy</p>
+
+          <p>
+            Transforming ivy green waste into a bio-based material and into a biodegradable plant pot and DIY system.
+            This project strengthened my interest in sustainability and biomaterials, material experimentation and circular value creation.
+          </p>
+        </div>
+      </div>
+
+      <!-- Speculative Dinner -->
+      <div class="project-card">
+        <div class="project-img">
+          <img src="speculative_dinner.jpeg" alt="Speculative Dinner project">
+        </div>
+
+        <div class="project-body">
+          <span class="project-tag">Speculative Design</span>
+
+          <p class="project-name">Speculative Dinner</p>
+
+          <p>
+            Explored how ambiguity, discomfort and designed artefacts can influence social behaviours.
+            Helped me gain insights about facilitation, participation and the ethical responsibility of designing an experience.
+          </p>
+        </div>
+      </div>
+
+      <!-- Cluebound -->
+      <div class="project-card">
+        <div class="project-img">
+          <img src="cluebound.jpeg" alt="Cluebound project">
+        </div>
+
+        <div class="project-body">
+          <span class="project-tag">Interaction &amp; Narrative</span>
+
+          <p class="project-name">Cluebound</p>
+
+          <p>
+            A mystery exploration game where I took part in the visual storytelling, atmosphere and game experience.
+            Helped me connect aesthetics, narrative, user engagement and interaction design.
+          </p>
+        </div>
+      </div>
+
+      <!-- Exploratory Making -->
+      <div class="project-card">
+        <div class="project-img">
+          <img src="exploratory_making.jpeg" alt="Exploratory Making project">
+        </div>
+
+        <div class="project-body">
+          <span class="project-tag">Prototyping</span>
+
+          <p class="project-name">Exploratory Making</p>
+
+          <p>
+            Supported my growth in physical prototyping, mechanisms, materials and iterative making.
+            Built hands-on technical confidence through foamcore, balsa wood and repeated physical interactions.
+          </p>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- STICKY SECTION NAV -->
-  <nav class="section-nav" aria-label="Page sections">
-    <ul>
-      <li><a href="#introduction">Introduction</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#identity">Identity</a></li>
-      <li><a href="#vision">Design Vision</a></li>
-      <li><a href="#collaboration">Collaboration</a></li>
-      <li><a href="#planning">Planning</a></li>
-      <li><a href="#critical">Critical Attitude</a></li>
-      <li><a href="#expertise">Expertise Areas</a></li>
-      <li><a href="#pdp">Development Plan</a></li>
-      <li><a href="#timeline">Past &amp; Future</a></li>
-    </ul>
-  </nav>
+</main>
 
-  <!-- MAIN -->
-  <main class="page">
+<footer>
+  <p>
+    2025 Lasic Francesca · Industrial Design, TU/e · All rights reserved.
+  </p>
+</footer>
 
-    <!-- INTRODUCTION -->
-    <section id="introduction" class="content-section">
-      <p class="sec-label">Introduction</p>
-      <h2 class="sec-title">A Shift in How I Design</h2>
-      <div class="sec-bar"></div>
-      <div class="prose reveal">
-        <p>Compared to year one, my second year in Industrial Design marked a significant shift in how I view design itself and the role of the designer. During my first year I preferred focusing on visual communication, aesthetics and intuitive ideation.</p>
-        <p>In year two I started approaching design in a structured, critical and multidisciplinary way. I gained awareness of how design connects technology, sustainability, interaction, business, users and society. This evolution gradually developed my interest in emotionally engaging products and sustainability-driven interaction design.</p>
-        <p>This portfolio reflects my growth between year one and year two by showing how my projects, reflections, collaborations and future goals shaped the development of my professional identity.</p>
-        <p>Together these projects show my shift from a visually oriented designer to a reflective, experimental and systems-aware one.</p>
-      </div>
-    </section>
+<script>
+  (function () {
+    const btn = document.querySelector('[data-theme-toggle]');
+    const html = document.documentElement;
 
-    <hr class="section-sep">
+    let dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    <!-- PROJECT OVERVIEW -->
-    <section id="projects" class="content-section">
-      <p class="sec-label">Project Overview</p>
-      <h2 class="sec-title">Year Two Projects</h2>
-      <div class="sec-bar"></div>
-      <p class="prose reveal" style="margin-bottom: 36px; color: var(--muted);">Several year two projects shaped my development.</p>
+    html.dataset.theme = dark ? 'dark' : 'light';
 
-      <div class="project-grid reveal">
+    setIcon();
 
-        <!-- Terravy / Reivy -->
-        <div class="project-card">
-          <div class="project-img-placeholder" data-project="terravy">
-            <!-- swap this tag with <img src="your-image.jpg" alt="Terravy prototype"> when ready -->
-            <i class="fas fa-seedling"></i>
-            <span>Terravy / Reivy</span>
-          </div>
-          <div class="project-body">
-            <span class="project-tag">Biomaterials &amp; Sustainability</span>
-            <p class="project-name">Terravy &amp; Reivy</p>
-            <p>Transforming ivy green waste into a bio-based material and into a biodegradable plant pot and DIY system. This project strengthened my interest in sustainability and biomaterials, material experimentation and circular value creation.</p>
-          </div>
-        </div>
-
-        <!-- Speculative Dinner -->
-        <div class="project-card">
-          <div class="project-img-placeholder" data-project="speculative">
-            <i class="fas fa-utensils"></i>
-            <span>Speculative Dinner</span>
-          </div>
-          <div class="project-body">
-            <span class="project-tag">Speculative Design</span>
-            <p class="project-name">Speculative Dinner</p>
-            <p>Explored how ambiguity, discomfort and designed artefacts can influence social behaviours. Helped me gain insights about facilitation, participation and the ethical responsibility of designing an experience.</p>
-          </div>
-        </div>
-
-        <!-- Cluebound -->
-        <div class="project-card">
-          <div class="project-img-placeholder" data-project="cluebound">
-            <i class="fas fa-puzzle-piece"></i>
-            <span>Cluebound</span>
-          </div>
-          <div class="project-body">
-            <span class="project-tag">Interaction &amp; Narrative</span>
-            <p class="project-name">Cluebound</p>
-            <p>A mystery exploration game where I took part in the visual storytelling, atmosphere and game experience. Helped me connect aesthetics, narrative, user engagement and interaction design.</p>
-          </div>
-        </div>
-
-        <!-- Exploratory Making -->
-        <div class="project-card">
-          <div class="project-img-placeholder" data-project="making">
-            <i class="fas fa-tools"></i>
-            <span>Exploratory Making</span>
-          </div>
-          <div class="project-body">
-            <span class="project-tag">Prototyping</span>
-            <p class="project-name">Exploratory Making</p>
-            <p>Supported my growth in physical prototyping, mechanisms, materials and iterative making. Built hands-on technical confidence through foamcore, balsa wood and repeated physical interactions.</p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <hr class="section-sep">
-
-    <!-- PROFESSIONAL IDENTITY -->
-    <section id="identity" class="content-section">
-      <p class="sec-label">About Me</p>
-      <h2 class="sec-title">Professional Identity</h2>
-      <div class="sec-bar"></div>
-      <div class="two-col reveal">
-        <div class="prose">
-          <p>As a designer, I identify as someone who is able to combine creativity, emotional sensitivity and experimentation. I am deeply interested in projects that involve storytelling, material exploration, interaction and atmosphere creation. I really enjoy developing concepts to create emotional engagement and meaningful experiences rather than purely functional experiences. Year two highlighted how my strongest professional contributions often involve ideation, visual communication, concept thinking and the ability to create coherent narratives and aesthetics around an idea.</p>
-          <p>A major strength entering a professional environment is my adaptability. Collaborative projects highlighted the importance of adapting my personal beliefs to fit the different stages of the process and to better work with others. During my first year I preferred staying closer to my comfort zone by focusing on visual tasks. In year two I became comfortable moving between broader areas like research, ideation and testing. My own curiosity also pushed me to explore unfamiliar methods and tools and to partake in projects involving biomaterials, electronics workshops and speculative interaction.</p>
-          <p>Another strength I recognise in myself is my reflective attitude. I adapted to continuously question outcomes, assumptions and design decisions to identify areas of improvement. I always focus on approaching projects with empathy and emotional awareness when handling user experiences and social interactions.</p>
-          <p>Compared to year one, I now understand my role as a designer clearly and no longer see it as visual creation but as a process combining research, experimentation, reflection, communication, interaction and responsibility.</p>
-        </div>
-        <div>
-          <div class="prose">
-            <h3>Strengths</h3>
-          </div>
-          <div class="tag-list">
-            <span class="tag tag-s">Adaptability</span>
-            <span class="tag tag-s">Reflective attitude</span>
-            <span class="tag tag-s">Emotional sensitivity</span>
-            <span class="tag tag-s">Concept thinking</span>
-            <span class="tag tag-s">Visual communication</span>
-            <span class="tag tag-s">Narrative building</span>
-          </div>
-          <div class="prose" style="margin-top: 32px;">
-            <h3>Areas to develop</h3>
-            <p>At the same time, my second year made me highly aware of my weaknesses. I sometimes get too attached to conceptual depth which makes my ideas overly ambitious or too difficult to simplify. I sometimes explore too many possibilities before narrowing down decisions, which can lead to a lack of efficiency and feasibility. In technical discussions I hesitate when I lack confidence in my technical knowledge.</p>
-            <p>These insights helped me shape my PDP goals, highlighting my need to improve technical independence, simplify concepts earlier and balance experimentation and feasibility.</p>
-          </div>
-          <div class="tag-list">
-            <span class="tag tag-w">Technical confidence</span>
-            <span class="tag tag-w">Concept simplification</span>
-            <span class="tag tag-w">Feasibility balance</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <hr class="section-sep">
-
-    <!-- DESIGN VISION -->
-    <section id="vision" class="content-section">
-      <p class="sec-label">Design Vision</p>
-      <h2 class="sec-title">Design as Relationship</h2>
-      <div class="sec-bar"></div>
-      <div class="quote-block reveal">
-        <blockquote>"I personally don't reduce design to the creation of products and services but the creation of relationships to connect people, materials, systems, emotion and environment."</blockquote>
-      </div>
-      <div class="pillar-grid reveal">
-        <div class="pillar">
-          <i class="fas fa-heart"></i>
-          <h4>Emotional Engagement</h4>
-          <p>I don't only see users as passive receivers of solutions but as active participants within a system or experience. Design can create meaning not only through clarity but also through tension, uncertainty and discussion, as shown in Speculative Dinner.</p>
-        </div>
-        <div class="pillar">
-          <i class="fas fa-leaf"></i>
-          <h4>Sustainability</h4>
-          <p>I don't define sustainable design only as reducing environmental impact. It should also create stronger relationships between people and materials while encouraging awareness of ecological systems. Sustainability is not only technical but also emotional, educational and participatory.</p>
-        </div>
-        <div class="pillar">
-          <i class="fas fa-laptop-code"></i>
-          <h4>Technology as Medium</h4>
-          <p>Technology plays a key role not as an isolated tool, but as a medium for communication, storytelling and interaction. In Study Buddy, physical computing and emotional expressions were used to influence study behaviour and create a companion. Technology is deeply valued when it supports human experience rather than dominating it.</p>
-        </div>
-        <div class="pillar">
-          <i class="fas fa-users"></i>
-          <h4>Participatory Experience</h4>
-          <p>Design should not only solve practical problems but also encourage reflection, interaction and awareness of issues. My vision of design is focused on participatory experiences where people shape meaning together.</p>
-        </div>
-        <div class="pillar">
-          <i class="fas fa-lightbulb"></i>
-          <h4>Speculative Thinking</h4>
-          <p>I intend to continue working on projects involving biomaterials, computing, participatory interaction and speculative design. My goal is to create design experiences that are emotionally meaningful and environmentally conscious while remaining socially reflective.</p>
-        </div>
-        <div class="pillar">
-          <i class="fas fa-sitemap"></i>
-          <h4>Systems Awareness</h4>
-          <p>Design decisions are connected to broader systems like consumption, waste, social values and ecological responsibility. Material experimentation, user participation and circular value all influence each other in ways that shape the final outcome.</p>
-        </div>
-      </div>
-      <div class="prose reveal">
-        <p>To bring this vision into reality my intent is to continue developing through internships, independent prototyping, material experimentation and multidisciplinary collaboration. My further goal is to create design experiences that are emotionally meaningful and environmentally conscious while remaining socially reflective.</p>
-      </div>
-    </section>
-
-    <hr class="section-sep">
-
-    <!-- REFLECTION ON COLLABORATION -->
-    <section id="collaboration" class="content-section">
-      <p class="sec-label">Reflection</p>
-      <h2 class="sec-title">Collaboration</h2>
-      <div class="sec-bar"></div>
-      <div class="prose reveal">
-        <p>Compared to year one my collaboration skills improved significantly during year two. In my first year I often focused on completing my own tasks. I struggled to adapt when democratic group decisions were not reflecting my personal ideas. This year I gained the awareness that collaboration is not only about dividing tasks but also collectively shaping ideas through discussion, compromise and reflection.</p>
-        <p>During Terravy collaboration became especially important because the project involved uncertain material experimentation. At one point I became interested in working with bioplastics and developed early material explorations around this direction. When the group decided to focus on ivy instead I first saw this as a limitation of my individual contribution. Through reflection I understood that adapting to the group decision made the project more coherent. This was for me an important moment because I learned that collaboration requires letting go of personal attachment when another direction better supports the collective goal.</p>
-        <p>During Speculative Dinner I experienced a different kind of collaboration, as it extended beyond teammates and included the participants themselves. Showing how as designers we collaborate in all aspects of our job when working for humans.</p>
-        <p>I also improved how I worked with user and stakeholder insights. I made use of personas, value proposition canvas, PESTEL analysis and user journey mapping to understand how different stakeholders experience value.</p>
-        <p>Although my collaboration improved, I still want to develop confidence in technical discussions and become more proactive in coordinating more complex group flows. I want to be able to contribute not only creatively and as a designer but more strongly in planning, feasibility decisions and technical evaluation.</p>
-      </div>
-    </section>
-
-    <hr class="section-sep">
-
-    <!-- REFLECTION ON PLANNING -->
-    <section id="planning" class="content-section">
-      <p class="sec-label">Reflection</p>
-      <h2 class="sec-title">Organising and Planning</h2>
-      <div class="sec-bar"></div>
-      <div class="prose reveal">
-        <p>Compared to year one I became more structured in organising my projects and setting learning goals. In my first year I often relied on intuition and spontaneous decision making. While this supported creativity, it also caused inefficient workflows and last-minute problem solving. During year two it was in my goals to fix this. The increasing complexity of projects forced me to develop stronger planning habits in order to become more aware of how organisation directly influences the quality of the overall design process.</p>
-        <p>The first important improvement was learning how to divide long-term projects into smaller stages such as research, ideation, experimentation, iteration, testing and reflection. I started using collaborative planning tools, shared documentation and clear task divisions in my teams. This proved to be useful in projects that involved prototyping and technical experimentation where progress depended on coordination and timing.</p>
-      </div>
-    </section>
-
-    <hr class="section-sep">
-
-    <!-- REFLECTION ON CRITICAL ATTITUDE -->
-    <section id="critical" class="content-section">
-      <p class="sec-label">Reflection</p>
-      <h2 class="sec-title">Critical Attitude</h2>
-      <div class="sec-bar"></div>
-      <div class="prose reveal">
-        <p>Year two further strengthened my ability to critically analyse my assumptions, methods and design decisions. Rather than only evaluating whether a project was successful, I focused on understanding why choices produced specific outcomes and what these revealed about my design thinking.</p>
-        <p>One of the key developments was learning to see uncertainty, ambiguity and failure as valuable parts of design. During Speculative Dinner I was able to shift my vision of facilitation by observing how participants responded to the way I designed my experience based on ambiguity, reflecting on the overall process with a clear critical attitude.</p>
-        <p>Biomaterial experimentation in Terravy also changed my attitude towards failure. Some early experiments were too brittle or too unstable. At first this was frustrating. I later understood that these failures revealed incorrect assumptions about materials and helped guide the process. This made me see experimentation as a research method rather than only a way to reach a final outcome.</p>
-        <p>Year two also increased my awareness of ethical and cultural contexts. In Speculative Dinner, participants reacted differently to authority, discomfort and unclear rules. This gave me insights to reflect on how social norms influence behaviour and how design can create pressure, compliance and resistance. In sustainability projects I also became more aware that design decisions are connected to broader systems like consumption, waste, social values and ecological responsibility.</p>
-        <p>Critical reflection also helped me recognise my own design patterns. I usually prioritise emotional depth and conceptual richness but I also recognise my need to balance this with clarity, simplicity and feasibility. This awareness now helps me make more conscious decisions during projects.</p>
-      </div>
-    </section>
-
-    <hr class="section-sep">
-
-    <!-- INTEGRATION OF EXPERTISE AREAS -->
-    <section id="expertise" class="content-section">
-      <p class="sec-label">Expertise Areas</p>
-      <h2 class="sec-title">Integration of Expertise</h2>
-      <div class="sec-bar"></div>
-      <div class="expertise-grid reveal">
-        <div class="exp-card">
-          <h4>Business and Entrepreneurship</h4>
-          <p>From my perspective, Business and Entrepreneurship concerns the ability of a design to create value within real systems. It is not only about markets but also about stakeholders, feasibility, risks and long-term impact. I applied this strongly in Terravy where I used value proposition canvas, PESTEL analysis, personas and stakeholder thinking to transform a biodegradable pot into a DIY product/service system. This connected my vision of sustainability with user value and circular business.</p>
-        </div>
-        <div class="exp-card">
-          <h4>Creativity and Aesthetics</h4>
-          <p>Creativity and aesthetics is about shaping experiences visually, emotionally and conceptually. I see aesthetics as something able to influence how people feel, behave and interpret a design. In Cluebound this reflected through visual storytelling, atmosphere and the contrast between a visually appealing style and a mysterious storyline. In Speculative Dinner aesthetics was not only visual but also part of the whole experience: the strange cutlery, unclear menu and controlled atmosphere were able to shape behaviours.</p>
-        </div>
-        <div class="exp-card">
-          <h4>Math, Data and Computing</h4>
-          <p>Math, Data and Computing translated to me as using structured reasoning, system thinking, data and computational logic to support design decisions. This is still one of my developing areas but during this year I was able to grow in it significantly. I used sensors, Arduino and interaction logic to connect computing to user experience. In Terravy structured analysis methods helped me organise information and make better strategic decisions.</p>
-        </div>
-        <div class="exp-card">
-          <h4>Technology and Realisation</h4>
-          <p>Technology and realisation is about transforming ideas into tangible and functional outcomes. It includes prototyping, materials, mechanisms, electronics and feasibility. This was one of my biggest development areas in year two. In Terravy I explored biomaterials, wooden frames and sample standardisation. In Exploratory Making, I developed mechanisms through foamcore, balsa wood and repeated physical interactions.</p>
-        </div>
-        <div class="exp-card">
-          <h4>User and Society</h4>
-          <p>User and society is about understanding people, behaviour, ethics, culture and social impact. The best application of this area was Speculative Dinner, which studied how ambiguity, authority and discomfort influence social behaviour. Terravy helped me reflect on sustainability behaviour and the relationship between users and ecological systems.</p>
-        </div>
-        <div class="exp-card" style="background: color-mix(in srgb, var(--pink) 6%, var(--surface));">
-          <h4 style="color: var(--text);">Connected, Not Separate</h4>
-          <p>These expertise areas are connected rather than separate. In all my projects I was able to apply multiple areas at the same time. Terravy showed how User and Society, Technology and Realisation and Business and Entrepreneurship overlap: material experimentation, user participation and circular value all influenced each other.</p>
-        </div>
-      </div>
-    </section>
-
-    <hr class="section-sep">
-
-    <!-- PERSONAL DEVELOPMENT PLAN -->
-    <section id="pdp" class="content-section">
-      <p class="sec-label">Development Plan</p>
-      <h2 class="sec-title">Personal Development Plan</h2>
-      <div class="sec-bar"></div>
-      <div class="pdp-list reveal">
-        <div class="pdp-item">
-          <div class="pdp-num">1</div>
-          <p>My short-term development is focused on technical confidence and simplification to achieve stronger project planning. By the end of the semester I will complete three small Arduino-based prototypes involving sensors and outputs. This goal is specific and measurable and is a practical way to directly address my hesitation in technical decision making.</p>
-        </div>
-        <div class="pdp-item">
-          <div class="pdp-num">2</div>
-          <p>A second short-term goal is to test the core interaction of my next design project within the first three weeks. This will help me avoid over-complicating concepts before validating feasibility. I want to use low-fidelity prototypes earlier and ask for feedback from users and peers sooner.</p>
-        </div>
-        <div class="pdp-item">
-          <div class="pdp-num">3</div>
-          <p>A third goal is to improve how I communicate practical value. In my next sustainability-related project I want to create at least one user journey and one value proposition canvas before finalising the concept. This will help me connect my ideas more clearly to users, stakeholders and possible implementation.</p>
-        </div>
-        <div class="pdp-item">
-          <div class="pdp-num">4</div>
-          <p>Thinking long term, I want to specialise further for an internship related to curricular design or interaction design. I want to find a suitable experience that aligns with my vision while continuing to build my portfolio in a way that will help me communicate my identity clearly.</p>
-        </div>
-        <div class="pdp-item">
-          <div class="pdp-num">5</div>
-          <p>By the end of my bachelor I want to feel confident combining conceptual thinking with technical realisation. This means not only imagining meaningful experiences but also being able to prototype, test, explain and evaluate them independently.</p>
-        </div>
-      </div>
-    </section>
-
-    <hr class="section-sep">
-
-    <!-- PAST PRESENT FUTURE -->
-    <section id="timeline" class="content-section">
-      <p class="sec-label">Journey</p>
-      <h2 class="sec-title">Past, Present and Future</h2>
-      <div class="sec-bar"></div>
-      <div class="timeline reveal">
-        <div class="t-card">
-          <p class="t-period">Past</p>
-          <h3>Curiosity and Visual Thinking</h3>
-          <p>My past shaped me into a designer who approaches projects through curiosity, visual thinking and emotional expression. Before university I mainly associated design with aesthetics and artistic creation. During year one this perspective remained dominant as I focused strongly on visual communication, form and conceptual exploration.</p>
-        </div>
-        <div class="t-card now">
-          <p class="t-period">Present</p>
-          <h3>Reflective and Multidisciplinary</h3>
-          <p>In the present I can see myself as a more reflective and multidisciplinary designer. I am more aware of the relationships between users and materials, technology and systems and society. I still value aesthetics and emotion but with a new understanding that strong design also requires research, structure, feasibility, collaboration and critical responsibility.</p>
-        </div>
-        <div class="t-card">
-          <p class="t-period">Future</p>
-          <h3>Sustainable Systems and Interaction</h3>
-          <p>In the future I want to continue developing in the direction of sustainable systems, biomaterials and interactive products. I am interested in projects such as interactive installations, sustainability product service systems and speculative experiences in a material-driven design approach. Rather than focusing only on problem solving, I want to work to encourage reflection, participation and more conscious relationships between humans, technology and nature.</p>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>2025 Lasic Francesca &nbsp;·&nbsp; Industrial Design, TU/e &nbsp;·&nbsp; All rights reserved.</p>
-  </footer>
-
-  <script>
-    // Dark mode
-    (function(){
-      const btn = document.querySelector('[data-theme-toggle]');
-      const html = document.documentElement;
-      let dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    btn.addEventListener('click', function () {
+      dark = !dark;
       html.dataset.theme = dark ? 'dark' : 'light';
       setIcon();
-      btn.addEventListener('click', function(){
-        dark = !dark;
-        html.dataset.theme = dark ? 'dark' : 'light';
-        setIcon();
-      });
-      function setIcon(){
-        btn.innerHTML = dark
-          ? '<i class="fas fa-sun"></i>'
-          : '<i class="fas fa-moon"></i>';
-        btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
-      }
-    })();
-
-    // Scroll reveal
-    (function(){
-      const io = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
-      }, {threshold: 0.08});
-      document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-    })();
-
-    // Active section highlight in sticky nav
-    (function(){
-      const links = document.querySelectorAll('.section-nav a');
-      const sections = Array.from(document.querySelectorAll('.content-section'));
-      const io = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-          if(e.isIntersecting){
-            links.forEach(function(l){ l.classList.remove('active'); });
-            const match = document.querySelector('.section-nav a[href="#' + e.target.id + '"]');
-            if(match) match.classList.add('active');
-          }
-        });
-      }, {threshold: 0.3});
-      sections.forEach(function(s){ io.observe(s); });
-    })();
-
-    // Header elevation on scroll
-    (function(){
-      const hdr = document.querySelector('header');
-      window.addEventListener('scroll', function(){
-        hdr.style.boxShadow = window.scrollY > 60 ? 'var(--shadow-md)' : 'var(--shadow-sm)';
-      }, {passive: true});
-    })();
-
-    // Smooth scroll for all internal links
-    document.querySelectorAll('a[href^="#"]').forEach(function(a){
-      a.addEventListener('click', function(e){
-        const t = document.querySelector(this.getAttribute('href'));
-        if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); }
-      });
     });
-  </script>
+
+    function setIcon() {
+      btn.innerHTML = dark
+        ? '<i class="fas fa-sun"></i>'
+        : '<i class="fas fa-moon"></i>';
+    }
+  })();
+</script>
 
 </body>
 </html>
